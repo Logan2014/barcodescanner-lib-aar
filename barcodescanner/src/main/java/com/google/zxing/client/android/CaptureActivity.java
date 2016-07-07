@@ -32,7 +32,6 @@ import com.google.zxing.ResultMetadataType;
 import com.google.zxing.ResultPoint;
 import com.google.zxing.client.android.camera.CameraManager;
 import com.google.zxing.client.android.camera.open.OpenCameraInterface;
-import com.google.zxing.client.android.clipboard.ClipboardInterface;
 import com.google.zxing.client.android.result.ResultButtonListener;
 import com.google.zxing.client.android.result.ResultHandler;
 import com.google.zxing.client.android.result.ResultHandlerFactory;
@@ -519,10 +518,6 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 
         CharSequence displayContents = resultHandler.getDisplayContents();
 
-        if (copyToClipboard && !resultHandler.areContentsSecure()) {
-            ClipboardInterface.setText(displayContents, this);
-        }
-
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
         if (resultHandler.getDefaultButtonID() != null && prefs.getBoolean(PreferencesActivity.KEY_AUTO_OPEN_WEB, false)) {
@@ -613,11 +608,6 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
             if (rawResultString.length() > 32) {
                 rawResultString = rawResultString.substring(0, 32) + " ...";
             }
-        }
-
-        if (copyToClipboard && !resultHandler.areContentsSecure()) {
-            CharSequence text = resultHandler.getDisplayContents();
-            ClipboardInterface.setText(text, this);
         }
 
         if (source == IntentSource.NATIVE_APP_INTENT) {
