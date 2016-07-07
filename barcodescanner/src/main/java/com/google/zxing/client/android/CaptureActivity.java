@@ -107,8 +107,6 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
   private CaptureActivityHandler handler;
   private Result savedResultToShow;
   private ViewfinderView viewfinderView;
-  private TextView statusView;
-  private Button flipButton;
   private View resultView;
   private Result lastResult;
   private boolean hasSurface;
@@ -199,8 +197,6 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     viewfinderView.setCameraManager(cameraManager);
 
     resultView = findViewById(R.id.result_view);
-    statusView = (TextView) findViewById(R.id.status_view);
-    flipButton = (Button) findViewById(R.id.flip_button);
 
     handler = null;
     lastResult = null;
@@ -221,8 +217,6 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     } else if ("portrait".equalsIgnoreCase(scanOrientationLock)) {
       setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
-
-    resetStatusView();
 
     beepManager.updatePrefs();
     ambientLightManager.start(cameraManager);
@@ -266,12 +260,6 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
             cameraManager.setManualCameraId(cameraId);
           }
         }
-        
-        String customPromptMessage = intent.getStringExtra(Intents.Scan.PROMPT_MESSAGE);
-        if (customPromptMessage != null) {
-          statusView.setText(customPromptMessage);
-        }
-
       } else if (dataString != null &&
                  dataString.contains("http://www.google") &&
                  dataString.contains("/m/products/scan")) {
@@ -579,7 +567,6 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
       return;
     }
 
-    statusView.setVisibility(View.GONE);
     viewfinderView.setVisibility(View.GONE);
     resultView.setVisibility(View.VISIBLE);
 
@@ -674,7 +661,6 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
       if (rawResultString.length() > 32) {
         rawResultString = rawResultString.substring(0, 32) + " ...";
       }
-      statusView.setText(getString(resultHandler.getDisplayTitle()) + " : " + rawResultString);
     }
 
     if (copyToClipboard && !resultHandler.areContentsSecure()) {
@@ -788,31 +774,6 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
   public void restartPreviewAfterDelay(long delayMS) {
     if (handler != null) {
       handler.sendEmptyMessageDelayed(R.id.restart_preview, delayMS);
-    }
-    resetStatusView();
-  }
-
-  private void resetStatusView() {
-    resultView.setVisibility(View.GONE);
-    statusView.setText(R.string.msg_default_status);
-    statusView.setVisibility(View.VISIBLE);
-    viewfinderView.setVisibility(View.VISIBLE);
-    lastResult = null;
-
-    // in case the device has multiple camera's and we want to show the flip button: show the flip button :)
-    if (getIntent().getBooleanExtra(Intents.Scan.SHOW_FLIP_CAMERA_BUTTON, false)) {
-      if (Camera.getNumberOfCameras() > 1) {
-        flipButton.setVisibility(View.VISIBLE);
-        flipButton.setOnClickListener(new Button.OnClickListener() {
-          @Override
-          public void onClick(View v) {
-            final int reqCamId = getIntent().getIntExtra(Intents.Scan.CAMERA_ID, OpenCameraInterface.NO_REQUESTED_CAMERA);
-            getIntent().putExtra(Intents.Scan.CAMERA_ID, reqCamId == 1 ? 0 : 1);
-            getIntent().putExtra(Intents.Scan.SHOW_FLIP_CAMERA_BUTTON, true);
-            recreate();
-          }
-        });
-      }
     }
   }
 

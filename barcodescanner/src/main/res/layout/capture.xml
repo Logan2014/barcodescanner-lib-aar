@@ -193,23 +193,6 @@
 
   </LinearLayout>
 
-  <TextView android:id="@+id/status_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:background="@color/transparent"
-            android:text="@string/msg_default_status"
-            android:textColor="@color/status_text"
-      android:visibility="gone" />
-
-  <Button android:id="@+id/flip_button"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_gravity="top|start"
-          android:drawableLeft="@drawable/flip_camera"
-          android:drawableStart="@drawable/flip_camera"
-          android:visibility="invisible"/>
-
   <LinearLayout
       android:orientation="vertical"
       android:layout_width="match_parent"
