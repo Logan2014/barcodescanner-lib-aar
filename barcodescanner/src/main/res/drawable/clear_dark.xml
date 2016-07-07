@@ -5,7 +5,6 @@
 
     <item
         android:state_pressed="true"
-        android:state_enabled="false"
-        android:color="#22ffffff"
+        android:color="#22ffff00"
         />
 </selector>
