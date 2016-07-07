@@ -31,6 +31,7 @@
   <string name="button_open_browser">Open browser</string>
   <string name="button_product_search">Product search</string>
   <string name="button_search_book_contents">Search contents</string>
+  <string name="button_send">Send</string>
   <string name="button_share_app">Application</string>
   <string name="button_share_bookmark">Bookmark</string>
   <string name="button_share_by_email">Share via email</string>
@@ -41,6 +42,7 @@
   <string name="button_sms">Send SMS</string>
   <string name="button_web_search">Web search</string>
   <string name="button_wifi">Connect to Network</string>
+  <string name="capture_hint">If code has not detecting, then input it manual:</string>
   <string name="contents_contact">Contact info</string>
   <string name="contents_email">Email address</string>
   <string name="contents_location">Geographic coordinates</string>
@@ -54,6 +56,7 @@
   <string name="history_empty_detail">No barcode scans have been recorded</string>
   <string name="history_send">Send history</string>
   <string name="history_title">History</string>
+  <string name="input_barcode_hint">for ex. 001020300</string>
   <string name="menu_encode_mecard">Use MECARD</string>
   <string name="menu_encode_vcard">Use vCard</string>
   <string name="menu_help">Help</string>

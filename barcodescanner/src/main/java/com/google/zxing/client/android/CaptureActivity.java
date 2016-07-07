@@ -19,6 +19,9 @@ package com.google.zxing.client.android;
 import android.content.res.Configuration;
 import android.hardware.Camera;
 import android.widget.Button;
+import android.widget.EditText;
+import android.text.TextWatcher;
+import android.text.Editable;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.DecodeHintType;
 import com.google.zxing.Result;
@@ -147,6 +150,27 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     ambientLightManager = new AmbientLightManager(this);
 
     PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
+
+            final Button sendButton = (Button) findViewById(R.id.send);
+    EditText codeInput = (EditText) findViewById(R.id.code_input);
+
+        codeInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start,
+                                          int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start,
+                                      int before, int count) {
+
+                sendButton.setEnabled(s.length() != 0);
+            }
+        });
   }
 
   @Override

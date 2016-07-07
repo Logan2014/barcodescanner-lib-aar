@@ -31,6 +31,7 @@
   <string name="button_open_browser">Відкрити браузер</string>
   <string name="button_product_search">Пошук товару</string>
   <string name="button_search_book_contents">Пошук вмісту книги</string>
+  <string name="button_send">Відправити</string>
   <string name="button_share_app">Програма</string>
   <string name="button_share_bookmark">Закладка</string>
   <string name="button_share_by_email">Поділитись через e-mail</string>
@@ -41,6 +42,7 @@
   <string name="button_sms">Відправити SMS</string>
   <string name="button_web_search">Пошук в інтернеті</string>
   <string name="button_wifi">Підключитись до мережі</string>
+  <string name="capture_hint">Якщо штрих-код не розпізнається, то введіть номер вручну:</string>
   <string name="contents_contact">Контактна інформація</string>
   <string name="contents_email">Адреса e-mail</string>
   <string name="contents_location">Географічні координати</string>
@@ -54,6 +56,7 @@
   <string name="history_empty_detail">Нема збережених штрих-кодів</string>
   <string name="history_send">Відправити історію</string>
   <string name="history_title">Історія</string>
+  <string name="input_barcode_hint">наприклад 001020300</string>
   <string name="menu_encode_mecard">Використовуйте MECARD</string>
   <string name="menu_encode_vcard">Використовуйте vCard</string>
   <string name="menu_help">Допомога</string>
