@@ -214,15 +214,6 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
         handler = null;
         lastResult = null;
 
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-    /*
-    if (prefs.getBoolean(PreferencesActivity.KEY_DISABLE_AUTO_ORIENTATION, false)) {
-      setRequestedOrientation(getCurrentOrientation());
-    } else {
-      setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
-    }
-    */
-
         // defaults to SENSOR
         final String scanOrientationLock = getIntent().getStringExtra(Intents.Scan.ORIENTATION_LOCK);
         if ("landscape".equalsIgnoreCase(scanOrientationLock)) {
@@ -508,7 +499,8 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 
     // Put up our own UI for how to handle the decoded contents.
     private void handleDecodeInternally(Result rawResult) {
-        Toast.makeText(getApplicationContext(), rawResult.toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), rawResult.getText(), Toast.LENGTH_SHORT).show();
+        restartPreviewAfterDelay(BULK_MODE_SCAN_DELAY_MS);
     }
 
     // Briefly show the contents of the barcode, then handle the result outside Barcode Scanner.
