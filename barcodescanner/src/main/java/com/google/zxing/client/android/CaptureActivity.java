@@ -39,7 +39,6 @@ import com.google.zxing.client.android.history.HistoryManager;
 import com.google.zxing.client.android.result.ResultButtonListener;
 import com.google.zxing.client.android.result.ResultHandler;
 import com.google.zxing.client.android.result.ResultHandlerFactory;
-import com.google.zxing.client.android.result.supplement.SupplementalInfoRetriever;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -641,17 +640,6 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
         contentsTextView.setText(displayContents);
         int scaledSize = Math.max(22, 32 - displayContents.length() / 4);
         contentsTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, scaledSize);
-
-        TextView supplementTextView = (TextView) findViewById(R.id.contents_supplement_text_view);
-        supplementTextView.setText("");
-        supplementTextView.setOnClickListener(null);
-        if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean(
-                PreferencesActivity.KEY_SUPPLEMENTAL, true)) {
-            SupplementalInfoRetriever.maybeInvokeRetrieval(supplementTextView,
-                    resultHandler.getResult(),
-                    historyManager,
-                    this);
-        }
 
         int buttonCount = resultHandler.getButtonCount();
         ViewGroup buttonView = (ViewGroup) findViewById(R.id.result_button_view);

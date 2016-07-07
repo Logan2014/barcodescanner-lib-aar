@@ -156,15 +156,6 @@
                     android:autoLink="web"
                     android:textIsSelectable="true"/>
 
-          <TextView android:id="@+id/contents_supplement_text_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/result_text"
-                    android:textColorLink="@color/result_text"
-                    android:paddingLeft="12dip"
-                    android:autoLink="web"
-                    android:textIsSelectable="true"/>
-
         </LinearLayout>
 
       </ScrollView>
