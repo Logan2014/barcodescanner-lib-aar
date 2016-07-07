@@ -104,7 +104,6 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     private CameraManager cameraManager;
     private CaptureActivityHandler handler;
     private ViewfinderView viewfinderView;
-    private View resultView;
     private Result lastResult;
     private boolean hasSurface;
     private IntentSource source;
@@ -211,8 +210,6 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 
         viewfinderView = (ViewfinderView) findViewById(R.id.viewfinder_view);
         viewfinderView.setCameraManager(cameraManager);
-
-        resultView = findViewById(R.id.result_view);
 
         handler = null;
         lastResult = null;
@@ -446,7 +443,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
                 break;
             case ZXING_LINK:
                 if (scanFromWebPageManager == null || !scanFromWebPageManager.isScanFromWebPage()) {
-                    handleDecodeInternally(rawResult, resultHandler, barcode);
+                    handleDecodeInternally(rawResult);
                 } else {
                     handleDecodeExternally(rawResult, resultHandler, barcode);
                 }
@@ -460,7 +457,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
                     // Wait a moment or else it will scan the same barcode continuously about 3 times
                     restartPreviewAfterDelay(BULK_MODE_SCAN_DELAY_MS);
                 } else {
-                    handleDecodeInternally(rawResult, resultHandler, barcode);
+                    handleDecodeInternally(rawResult);
                 }
                 break;
         }
@@ -510,34 +507,8 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     }
 
     // Put up our own UI for how to handle the decoded contents.
-    private void handleDecodeInternally(Result rawResult, ResultHandler resultHandler, Bitmap barcode) {
-
-        CharSequence displayContents = resultHandler.getDisplayContents();
-
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-
-        if (resultHandler.getDefaultButtonID() != null && prefs.getBoolean(PreferencesActivity.KEY_AUTO_OPEN_WEB, false)) {
-            resultHandler.handleButtonPress(resultHandler.getDefaultButtonID());
-            return;
-        }
-
-        viewfinderView.setVisibility(View.GONE);
-        resultView.setVisibility(View.VISIBLE);
-
-        int buttonCount = resultHandler.getButtonCount();
-        ViewGroup buttonView = (ViewGroup) findViewById(R.id.result_button_view);
-        buttonView.requestFocus();
-        for (int x = 0; x < ResultHandler.MAX_BUTTON_COUNT; x++) {
-            TextView button = (TextView) buttonView.getChildAt(x);
-            if (x < buttonCount) {
-                button.setVisibility(View.VISIBLE);
-                button.setText(resultHandler.getButtonText(x));
-                button.setOnClickListener(new ResultButtonListener(resultHandler, x));
-            } else {
-                button.setVisibility(View.GONE);
-            }
-        }
-
+    private void handleDecodeInternally(Result rawResult) {
+        Toast.makeText(getApplicationContext(), rawResult.toString(), Toast.LENGTH_SHORT).show();
     }
 
     // Briefly show the contents of the barcode, then handle the result outside Barcode Scanner.

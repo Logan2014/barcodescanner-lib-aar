@@ -26,36 +26,6 @@
       android:layout_width="fill_parent"
       android:layout_height="fill_parent"/>
 
-  <LinearLayout android:id="@+id/result_view"
-                android:orientation="vertical"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:background="@color/result_view"
-                android:visibility="gone"
-                android:baselineAligned="false">
-
-    <LinearLayout android:id="@+id/result_button_view"
-                  android:layout_width="fill_parent"
-                  android:layout_height="wrap_content"
-                  android:orientation="horizontal"
-                  android:gravity="center">
-
-      <Button style="@style/ResultButton"
-              android:visibility="gone"/>
-
-      <Button style="@style/ResultButton"
-              android:visibility="gone"/>
-
-      <Button style="@style/ResultButton"
-              android:visibility="gone"/>
-
-      <Button style="@style/ResultButton"
-              android:visibility="gone"/>
-
-    </LinearLayout>
-
-  </LinearLayout>
-
   <LinearLayout
       android:orientation="vertical"
       android:layout_width="match_parent"
@@ -126,6 +96,5 @@
             style="@drawable/clear_dark" />
       </RelativeLayout>
     </LinearLayout>
-
   </LinearLayout>
 </merge>
