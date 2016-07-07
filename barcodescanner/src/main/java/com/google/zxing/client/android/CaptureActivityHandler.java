@@ -97,7 +97,6 @@ public final class CaptureActivityHandler extends Handler {
         scaleFactor = bundle.getFloat(DecodeThread.BARCODE_SCALED_FACTOR);
       }
       activity.handleDecode((Result) message.obj, barcode, scaleFactor);
-
     } else if (message.what == R.id.decode_failed) {// We're decoding as fast as possible, so when one decode fails, start another.
       state = State.PREVIEW;
       cameraManager.requestPreviewFrame(decodeThread.getHandler(), R.id.decode);
