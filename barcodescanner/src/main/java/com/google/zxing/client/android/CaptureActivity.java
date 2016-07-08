@@ -18,6 +18,9 @@ package com.google.zxing.client.android;
 
 import android.content.Context;
 import android.content.res.Configuration;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -86,7 +89,6 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     private Map<DecodeHintType, ?> decodeHints;
     private String characterSet;
     private InactivityTimer inactivityTimer;
-    private BeepManager beepManager;
     private AmbientLightManager ambientLightManager;
 
     ViewfinderView getViewfinderView() {
@@ -111,7 +113,6 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 
         hasSurface = false;
         inactivityTimer = new InactivityTimer(this);
-        beepManager = new BeepManager(this);
         ambientLightManager = new AmbientLightManager(this);
 
         PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
@@ -195,7 +196,6 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
 
-        beepManager.updatePrefs();
         ambientLightManager.start(cameraManager);
 
         inactivityTimer.onResume();
@@ -273,7 +273,6 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
         }
         inactivityTimer.onPause();
         ambientLightManager.stop();
-        beepManager.close();
         cameraManager.closeDriver();
 
         if (!hasSurface) {
@@ -344,8 +343,12 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     public void handleDecode(Result rawResult, Bitmap barcode, float scaleFactor) {
         inactivityTimer.onActivity();
         lastResult = rawResult;
-        beepManager.playBeepSoundAndVibrate();
         drawResultPoints(barcode, scaleFactor, rawResult);
+
+        RingtoneManager.getRingtone(
+                getApplicationContext(),
+                RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+        ).play();
 
         if (runnedFromOtherActivity) {
             handleDecodeExternally(rawResult, barcode);
