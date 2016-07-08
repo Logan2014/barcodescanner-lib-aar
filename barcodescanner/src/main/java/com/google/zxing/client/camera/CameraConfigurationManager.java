@@ -238,5 +238,4 @@ final class CameraConfigurationManager {
       CameraConfigurationUtils.setBestExposure(parameters, newSetting);
     }
   }
-
 }
