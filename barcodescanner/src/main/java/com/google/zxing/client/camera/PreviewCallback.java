@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.zxing.client.android.camera;
+package com.google.zxing.client.camera;
 
 import android.graphics.Point;
 import android.hardware.Camera;

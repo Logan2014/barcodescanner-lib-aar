@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.zxing.client.android;
+package com.google.zxing.client;
 
 import java.net.URI;
 import java.net.URISyntaxException;

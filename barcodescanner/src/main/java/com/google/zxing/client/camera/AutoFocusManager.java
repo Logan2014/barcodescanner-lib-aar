@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.zxing.client.android.camera;
+package com.google.zxing.client.camera;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.concurrent.RejectedExecutionException;
 
-import com.google.zxing.client.android.PreferencesActivity;
+import com.google.zxing.client.PreferencesActivity;
 
 final class AutoFocusManager implements Camera.AutoFocusCallback {
 

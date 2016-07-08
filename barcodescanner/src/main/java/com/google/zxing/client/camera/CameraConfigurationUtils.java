@@ -14,17 +14,14 @@
  * limitations under the License.
  */
 
-package com.google.zxing.client.android.camera;
+package com.google.zxing.client.camera;
 
 import android.annotation.TargetApi;
-import android.content.Context;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.hardware.Camera;
 import android.os.Build;
 import android.util.Log;
-import android.view.Surface;
-import android.view.WindowManager;
 
 import java.util.ArrayList;
 import java.util.Arrays;

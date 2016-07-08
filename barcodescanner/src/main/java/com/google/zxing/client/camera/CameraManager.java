@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.zxing.client.android.camera;
+package com.google.zxing.client.camera;
 
 import android.content.Context;
 import android.content.res.Configuration;
@@ -23,14 +23,13 @@ import android.graphics.Rect;
 import android.hardware.Camera;
 import android.os.Handler;
 import android.util.Log;
-import android.view.Display;
-import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.WindowManager;
 
 import com.google.zxing.PlanarYUVLuminanceSource;
-import com.google.zxing.client.android.camera.open.OpenCamera;
-import com.google.zxing.client.android.camera.open.OpenCameraInterface;
+import com.google.zxing.client.CaptureActivity;
+import com.google.zxing.client.camera.open.OpenCamera;
+import com.google.zxing.client.camera.open.OpenCameraInterface;
 
 import java.io.IOException;
 
@@ -174,7 +173,7 @@ public final class CameraManager {
   }
 
   /**
-   * Convenience method for {@link com.google.zxing.client.android.CaptureActivity}
+   * Convenience method for {@link CaptureActivity}
    *
    * @param newSetting if {@code true}, light should be turned on if currently off. And vice versa.
    */

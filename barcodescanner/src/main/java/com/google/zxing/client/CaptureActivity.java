@@ -14,13 +14,11 @@
  * limitations under the License.
  */
 
-package com.google.zxing.client.android;
+package com.google.zxing.client;
 
 import android.content.Context;
 import android.content.res.Configuration;
-import android.media.Ringtone;
 import android.media.RingtoneManager;
-import android.net.Uri;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -33,8 +31,8 @@ import com.google.zxing.DecodeHintType;
 import com.google.zxing.Result;
 import com.google.zxing.ResultMetadataType;
 import com.google.zxing.ResultPoint;
-import com.google.zxing.client.android.camera.CameraManager;
-import com.google.zxing.client.android.camera.open.OpenCameraInterface;
+import com.google.zxing.client.camera.CameraManager;
+import com.google.zxing.client.camera.open.OpenCameraInterface;
 
 import android.app.Activity;
 import android.app.AlertDialog;

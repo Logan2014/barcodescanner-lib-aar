@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.zxing.client.android.camera.open;
+package com.google.zxing.client.camera.open;
 
 public enum CameraFacing {
 

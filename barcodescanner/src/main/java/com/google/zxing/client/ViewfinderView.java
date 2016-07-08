@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package com.google.zxing.client.android;
+package com.google.zxing.client;
 
 import com.google.zxing.ResultPoint;
-import com.google.zxing.client.android.camera.CameraManager;
+import com.google.zxing.client.camera.CameraManager;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

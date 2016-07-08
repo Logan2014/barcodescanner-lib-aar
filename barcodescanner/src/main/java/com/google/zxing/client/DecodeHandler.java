@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.zxing.client.android;
+package com.google.zxing.client;
 
 import android.graphics.Bitmap;
 import com.google.zxing.BinaryBitmap;
