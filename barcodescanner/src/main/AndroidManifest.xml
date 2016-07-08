@@ -5,9 +5,7 @@
 
     <uses-sdk android:minSdkVersion="15" android:targetSdkVersion="22"/>
 
-    <application
-        android:label="@string/app_name">
-
+    <application android:label="dummy">
         <activity
             android:name="com.google.zxing.client.CaptureActivity"
             android:clearTaskOnLaunch="true"

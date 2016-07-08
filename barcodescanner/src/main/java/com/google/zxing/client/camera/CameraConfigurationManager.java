@@ -27,7 +27,6 @@ import android.view.Display;
 import android.view.Surface;
 import android.view.WindowManager;
 
-import com.google.zxing.client.PreferencesActivity;
 import com.google.zxing.client.camera.open.CameraFacing;
 import com.google.zxing.client.camera.open.OpenCamera;
 
@@ -92,20 +91,6 @@ final class CameraConfigurationManager {
       cwRotationFromNaturalToCamera = (360 - cwRotationFromNaturalToCamera) % 360;
       Log.i(TAG, "Front camera overriden to: " + cwRotationFromNaturalToCamera);
     }
-
-    /*
-    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-    String overrideRotationString;
-    if (camera.getFacing() == CameraFacing.FRONT) {
-      overrideRotationString = prefs.getString(PreferencesActivity.KEY_FORCE_CAMERA_ORIENTATION_FRONT, null);
-    } else {
-      overrideRotationString = prefs.getString(PreferencesActivity.KEY_FORCE_CAMERA_ORIENTATION, null);
-    }
-    if (overrideRotationString != null && !"-".equals(overrideRotationString)) {
-      Log.i(TAG, "Overriding camera manually to " + overrideRotationString);
-      cwRotationFromNaturalToCamera = Integer.parseInt(overrideRotationString);
-    }
-     */
 
     cwRotationFromDisplayToCamera =
         (360 + cwRotationFromNaturalToCamera - cwRotationFromNaturalToDisplay) % 360;
@@ -178,25 +163,13 @@ final class CameraConfigurationManager {
 
     CameraConfigurationUtils.setFocus(
         parameters,
-        prefs.getBoolean(PreferencesActivity.KEY_AUTO_FOCUS, true),
-        prefs.getBoolean(PreferencesActivity.KEY_DISABLE_CONTINUOUS_FOCUS, true),
         safeMode);
 
     if (!safeMode) {
-      if (prefs.getBoolean(PreferencesActivity.KEY_INVERT_SCAN, false)) {
-        CameraConfigurationUtils.setInvertColor(parameters);
-      }
-
-      if (!prefs.getBoolean(PreferencesActivity.KEY_DISABLE_BARCODE_SCENE_MODE, true)) {
-        CameraConfigurationUtils.setBarcodeSceneMode(parameters);
-      }
-
-      if (!prefs.getBoolean(PreferencesActivity.KEY_DISABLE_METERING, true)) {
-        CameraConfigurationUtils.setVideoStabilization(parameters);
-        CameraConfigurationUtils.setFocusArea(parameters);
-        CameraConfigurationUtils.setMetering(parameters);
-      }
-
+      CameraConfigurationUtils.setBarcodeSceneMode(parameters);
+      CameraConfigurationUtils.setVideoStabilization(parameters);
+      CameraConfigurationUtils.setFocusArea(parameters);
+      CameraConfigurationUtils.setMetering(parameters);
     }
 
     parameters.setPreviewSize(bestPreviewSize.x, bestPreviewSize.y);
@@ -261,8 +234,7 @@ final class CameraConfigurationManager {
 
   private void doSetTorch(Camera.Parameters parameters, boolean newSetting, boolean safeMode) {
     CameraConfigurationUtils.setTorch(parameters, newSetting);
-    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-    if (!safeMode && !prefs.getBoolean(PreferencesActivity.KEY_DISABLE_EXPOSURE, true)) {
+    if (!safeMode) {
       CameraConfigurationUtils.setBestExposure(parameters, newSetting);
     }
   }

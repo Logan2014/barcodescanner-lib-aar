@@ -56,23 +56,19 @@ public final class CameraConfigurationUtils {
   }
 
   public static void setFocus(Camera.Parameters parameters,
-                              boolean autoFocus,
-                              boolean disableContinuous,
                               boolean safeMode) {
     List<String> supportedFocusModes = parameters.getSupportedFocusModes();
     String focusMode = null;
-    if (autoFocus) {
-      if (safeMode || disableContinuous) {
-        focusMode = findSettableValue("focus mode",
-                                       supportedFocusModes,
-                                       Camera.Parameters.FOCUS_MODE_AUTO);
-      } else {
-        focusMode = findSettableValue("focus mode",
-                                      supportedFocusModes,
-                                      Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE,
-                                      Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO,
-                                      Camera.Parameters.FOCUS_MODE_AUTO);
-      }
+    if (safeMode) {
+      focusMode = findSettableValue("focus mode",
+                                     supportedFocusModes,
+                                     Camera.Parameters.FOCUS_MODE_AUTO);
+    } else {
+      focusMode = findSettableValue("focus mode",
+                                    supportedFocusModes,
+                                    Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE,
+                                    Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO,
+                                    Camera.Parameters.FOCUS_MODE_AUTO);
     }
     // Maybe selected auto-focus but not available, so fall through here:
     if (!safeMode && focusMode == null) {
