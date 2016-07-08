@@ -294,12 +294,8 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         switch (keyCode) {
             case KeyEvent.KEYCODE_BACK:
-                if (runnedFromOtherActivity) {
-                    setResult(RESULT_CANCELED);
-                    finish();
-                } else {
-                    restartPreviewAfterDelay(0L);
-                }
+                setResult(RESULT_CANCELED);
+                finish();
                 return true;
 
             case KeyEvent.KEYCODE_FOCUS:
