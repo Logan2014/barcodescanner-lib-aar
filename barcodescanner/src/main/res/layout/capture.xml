@@ -87,7 +87,7 @@
             android:layout_height="wrap_content"
             android:text="@string/button_send"
             android:id="@+id/send"
-            android:background="@color/transparent"
+            android:background="@android:color/transparent"
             android:singleLine="true"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_alignParentRight="true"

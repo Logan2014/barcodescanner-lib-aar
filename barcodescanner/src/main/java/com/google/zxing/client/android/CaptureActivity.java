@@ -119,12 +119,6 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 
         final Button sendButton = (Button) findViewById(R.id.send);
         sendButton.setEnabled(false);
-        sendButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                setResult(Activity.RESULT_OK);
-                finish();
-            }
-        });
 
         final EditText codeInput = (EditText) findViewById(R.id.code_input);
         codeInput.addTextChangedListener(new TextWatcher() {
@@ -139,6 +133,15 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 sendButton.setEnabled(s.length() != 0);
+            }
+        });
+
+        sendButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(getIntent().getAction());
+                intent.putExtra(Intents.Scan.RESULT, codeInput.getText());
+                setResult(Activity.RESULT_OK, intent);
+                finish();
             }
         });
 
