@@ -15,7 +15,9 @@
  limitations under the License.
  -->
 <resources>
+  <string name="button_ok">Гаразд</string>
   <string name="button_send">Відправити</string>
   <string name="capture_hint">Якщо штрих-код не розпізнається, то введіть номер вручну:</string>
   <string name="input_barcode_hint">наприклад 001020300</string>
+  <string name="msg_camera_framework_bug">На жаль, виникла помилка камери. Можливо, вам знадобиться перезавантажити пристрій.</string>
 </resources>
