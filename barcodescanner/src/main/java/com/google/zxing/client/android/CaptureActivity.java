@@ -32,13 +32,10 @@ import com.google.zxing.ResultMetadataType;
 import com.google.zxing.ResultPoint;
 import com.google.zxing.client.android.camera.CameraManager;
 import com.google.zxing.client.android.camera.open.OpenCameraInterface;
-import com.google.zxing.client.android.result.ResultHandler;
-import com.google.zxing.client.android.result.ResultHandlerFactory;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -351,12 +348,11 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     public void handleDecode(Result rawResult, Bitmap barcode, float scaleFactor) {
         inactivityTimer.onActivity();
         lastResult = rawResult;
-        ResultHandler resultHandler = ResultHandlerFactory.makeResultHandler(this, rawResult);
         beepManager.playBeepSoundAndVibrate();
         drawResultPoints(barcode, scaleFactor, rawResult);
 
         if (runnedFromOtherActivity) {
-            handleDecodeExternally(rawResult, resultHandler, barcode);
+            handleDecodeExternally(rawResult, barcode);
         } else {
             handleDecodeInternally(rawResult);
         }
@@ -412,7 +408,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     }
 
     // Briefly show the contents of the barcode, then handle the result outside Barcode Scanner.
-    private void handleDecodeExternally(Result rawResult, ResultHandler resultHandler, Bitmap barcode) {
+    private void handleDecodeExternally(Result rawResult, Bitmap barcode) {
 
         if (barcode != null) {
             viewfinderView.drawResultBitmap(barcode);
