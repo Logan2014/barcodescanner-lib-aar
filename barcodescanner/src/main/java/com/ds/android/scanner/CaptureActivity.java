@@ -134,10 +134,11 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 
         sendButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(getIntent().getAction());
-                intent.putExtra(Intents.Scan.RESULT, codeInput.getText());
-                setResult(Activity.RESULT_OK, intent);
-                finish();
+            Intent intent = new Intent(getIntent().getAction());
+            intent.putExtra(Intents.Scan.RESULT, codeInput.getText());
+            intent.putExtra("manual", true);
+            setResult(Activity.RESULT_OK, intent);
+            finish();
             }
         });
 
@@ -240,27 +241,6 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
         } else {
             // Install the callback and wait for surfaceCreated() to init the camera.
             surfaceHolder.addCallback(this);
-        }
-    }
-
-    private int getCurrentOrientation() {
-        int rotation = getWindowManager().getDefaultDisplay().getRotation();
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            switch (rotation) {
-                case Surface.ROTATION_0:
-                case Surface.ROTATION_90:
-                    return ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE;
-                default:
-                    return ActivityInfo.SCREEN_ORIENTATION_REVERSE_LANDSCAPE;
-            }
-        } else {
-            switch (rotation) {
-                case Surface.ROTATION_0:
-                case Surface.ROTATION_270:
-                    return ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
-                default:
-                    return ActivityInfo.SCREEN_ORIENTATION_REVERSE_PORTRAIT;
-            }
         }
     }
 
