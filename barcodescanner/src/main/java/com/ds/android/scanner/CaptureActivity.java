@@ -135,7 +135,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
         sendButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             Intent intent = new Intent(getIntent().getAction());
-            intent.putExtra(Intents.Scan.RESULT, codeInput.getText());
+            intent.putExtra(Intents.Scan.RESULT, codeInput.getText().toString());
             intent.putExtra("manual", true);
             setResult(Activity.RESULT_OK, intent);
             finish();
