@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.zxing.client;
+package com.ds.android.scanner;
 
 import android.content.Intent;
 import android.net.Uri;

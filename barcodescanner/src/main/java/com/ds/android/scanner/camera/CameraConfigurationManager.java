@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.zxing.client.camera;
+package com.ds.android.scanner.camera;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -27,8 +27,8 @@ import android.view.Display;
 import android.view.Surface;
 import android.view.WindowManager;
 
-import com.google.zxing.client.camera.open.CameraFacing;
-import com.google.zxing.client.camera.open.OpenCamera;
+import com.ds.android.scanner.camera.open.CameraFacing;
+import com.ds.android.scanner.camera.open.OpenCamera;
 
 /**
  * A class which deals with reading, parsing, and setting the camera parameters which are used to

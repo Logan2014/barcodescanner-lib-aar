@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package com.google.zxing.client;
+package com.ds.android.scanner;
 
 import com.google.zxing.ResultPoint;
-import com.google.zxing.client.camera.CameraManager;
+import com.ds.android.scanner.camera.CameraManager;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -31,8 +31,6 @@ import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import barcodescanner.xservices.nl.barcodescanner.R;
 
 /**
  * This view is overlaid on top of the camera preview. It adds the viewfinder rectangle and partial

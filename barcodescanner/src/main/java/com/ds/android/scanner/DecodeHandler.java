@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.zxing.client;
+package com.ds.android.scanner;
 
 import android.graphics.Bitmap;
 import com.google.zxing.BinaryBitmap;
@@ -33,8 +33,6 @@ import android.util.Log;
 
 import java.io.ByteArrayOutputStream;
 import java.util.Map;
-
-import barcodescanner.xservices.nl.barcodescanner.R;
 
 final class DecodeHandler extends Handler {
 

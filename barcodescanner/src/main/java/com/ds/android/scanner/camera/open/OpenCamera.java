@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.zxing.client.camera.open;
+package com.ds.android.scanner.camera.open;
 
 import android.hardware.Camera;
 

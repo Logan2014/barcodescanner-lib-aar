@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.zxing.client;
+package com.ds.android.scanner;
 
 import android.content.Context;
 import android.content.res.Configuration;
@@ -31,8 +31,8 @@ import com.google.zxing.DecodeHintType;
 import com.google.zxing.Result;
 import com.google.zxing.ResultMetadataType;
 import com.google.zxing.ResultPoint;
-import com.google.zxing.client.camera.CameraManager;
-import com.google.zxing.client.camera.open.OpenCameraInterface;
+import com.ds.android.scanner.camera.CameraManager;
+import com.ds.android.scanner.camera.open.OpenCameraInterface;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -59,8 +59,6 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Map;
-
-import barcodescanner.xservices.nl.barcodescanner.R;
 
 /**
  * This activity opens the camera and does the actual scanning on a background thread. It draws a

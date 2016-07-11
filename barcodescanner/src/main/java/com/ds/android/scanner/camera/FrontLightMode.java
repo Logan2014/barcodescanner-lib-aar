@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.zxing.client.camera;
+package com.ds.android.scanner.camera;
 
 import android.content.SharedPreferences;
 

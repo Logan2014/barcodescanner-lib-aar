@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package com.google.zxing.client;
+package com.ds.android.scanner;
 
 import android.graphics.BitmapFactory;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.DecodeHintType;
 import com.google.zxing.Result;
-import com.google.zxing.client.camera.CameraManager;
+import com.ds.android.scanner.camera.CameraManager;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -32,8 +32,6 @@ import android.os.Message;
 
 import java.util.Collection;
 import java.util.Map;
-
-import barcodescanner.xservices.nl.barcodescanner.R;
 
 /**
  * This class handles all the messaging which comprises the state machine for capture.

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.zxing.client.camera;
+package com.ds.android.scanner.camera;
 
 import android.content.Context;
 import android.content.res.Configuration;
@@ -27,9 +27,9 @@ import android.view.SurfaceHolder;
 import android.view.WindowManager;
 
 import com.google.zxing.PlanarYUVLuminanceSource;
-import com.google.zxing.client.CaptureActivity;
-import com.google.zxing.client.camera.open.OpenCamera;
-import com.google.zxing.client.camera.open.OpenCameraInterface;
+import com.ds.android.scanner.CaptureActivity;
+import com.ds.android.scanner.camera.open.OpenCamera;
+import com.ds.android.scanner.camera.open.OpenCameraInterface;
 
 import java.io.IOException;
 
